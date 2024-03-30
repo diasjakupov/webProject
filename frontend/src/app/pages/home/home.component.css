@@ -8,7 +8,10 @@
   height: 100vh; /* Минимальная высота, чтобы фон был виден */
   background-image: url("D:/webProject/frontend/src/assets/img.png");
   background-size: cover;
-  background-position: center;
+  background-position: inherit;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100%;
 }
 
 
