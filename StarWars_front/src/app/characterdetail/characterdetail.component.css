@@ -1,0 +1,121 @@
+.planet-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0px;
+    position: relative;
+    /* height: 100vh; */
+}
+
+.planet-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/16/56/80/81/38/18cd53340cd7.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+@keyframes zoomInBounce {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    70% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+.planet-container,
+.residents-container,
+.films-container {
+    box-shadow: 0 0px 30px rgba(255, 255, 255, 0.661);
+    border: 1px solid #333;
+    margin: 10px;
+    flex-basis: calc(33.333% - 20px);
+    margin-top: 3%;
+    background-color: #1D1E1F;
+    position: relative;
+    color: #fff;
+    background: linear-gradient(to bottom right, #1D1E1F, #4c5c68);
+    border-radius: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    animation: zoomInBounce 2s ease-out forwards;
+}
+
+.planet-image {
+    height: 200px;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planet-image img {
+    max-height: 100%;
+}
+
+.planet-info,
+.residents-list,
+.films-list {
+    padding: 15px;
+}
+
+h2 {
+    color: white;
+    background-color: black;
+    margin: 0;
+    padding: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .planet-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .planet-container,
+    .residents-container,
+    .films-container {
+        flex-basis: 100%;
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .planet-image {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .planet-container,
+    .residents-container,
+    .films-container {
+        padding: 10px;
+    }
+
+    .planet-info p,
+    .residents-list p,
+    .films-list p {
+        font-size: 0.8em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .image-background {
+        position: absolute;
+    }
+}

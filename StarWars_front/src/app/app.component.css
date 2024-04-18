@@ -1,0 +1,150 @@
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 10px 20px;
+}
+
+.logo-container {
+    cursor: pointer;
+    width: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+}
+
+.site-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    float: left;
+}
+
+.nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-item .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #615f5f;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.15s, max-height 0.3s;
+    transition-timing-function: cubic-bezier(0.7, 0, 1, 1);
+}
+
+.nav-item .dropdown a {
+    color: rgb(247, 235, 235);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.nav-item:hover .dropdown {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.video-films-container {
+    background-color: #222;
+    padding: 10px 0;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .site-header,
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .logo-container {
+        margin-bottom: 20px;
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-nav a {
+        padding: 10px;
+    }
+
+    .nav-menu .nav-item {
+        width: 100%;
+    }
+
+    .nav-item .dropdown {
+        position: static;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        padding: 10px;
+    }
+
+    .site-nav a {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .nav-link {
+        padding: 10px 12px;
+    }
+
+    .nav-item .dropdown a {
+        padding: 10px;
+    }
+}
+
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown {
+    display: block;
+    opacity: 1;
+}

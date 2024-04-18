@@ -1,0 +1,37 @@
+<div class="planet-page">
+    <div class="planet-container">
+        <div class="planet-image">
+            <img src="https://upload.wikimedia.org/wikipedia/ru/thumb/d/dc/Melfal.jpg/640px-Melfal.jpg" alt="Картинка Планеты">
+        </div>
+        <div class="planet-info">
+            <p>Name: {{ starship.name }}</p>
+            <p>Model: {{ starship.model }}</p>
+            <p>Manufacturer: {{ starship.manufacturer }}</p>
+            <p>Cost in credits: {{ starship.cost_in_credits }}</p>
+            <p>Max atmosphering speed: {{ starship.max_atmosphering_speed }}</p>
+            <p>Crew: {{ starship.crew }}</p>
+            <p>Passengers: {{ starship.passengers }}</p>
+            <p>Cargo capacity: {{ starship.cargo_capacity }}</p>
+            <p>Consumables: {{ starship.consumables }}</p>
+            <p>Hyperdrive rating: {{ starship.hyperdrive_rating }}</p>
+            <p>MGLT: {{ starship.MGLT }}</p>
+            <p>Starship class: {{ starship.starship_class }}</p>
+        </div>
+    </div>
+
+    <div class="residents-container">
+        <h2>Pilots</h2>
+        <div class="residents-list">
+            <h1 *ngIf="!pilots">No pilots</h1>
+            <p *ngFor="let p of pilots"><a style="color: aliceblue;" [routerLink]="['/character', p.name]"> {{ p.name }}</a></p>
+        </div>
+    </div>
+
+    <div class="films-container">
+        <h2>Films</h2>
+        <div class="films-list">
+            <h1 *ngIf="!films">No films</h1>
+            <p *ngFor="let f of films">{{ f.title }}</p>
+        </div>
+    </div>
+</div>

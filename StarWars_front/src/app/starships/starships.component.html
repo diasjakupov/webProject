@@ -1,0 +1,16 @@
+<div class="results" id="result">
+    <div *ngFor="let starship of starships" class="planet-card" [routerLink]="['/starship', starship.name]">
+        <h2 class="planet-name"> <img width="48" height="48" src="https://img.icons8.com/color/48/star-trek-kumari-ship.png" alt="star-trek-kumari-ship"/>{{ starship.name }}</h2>
+        <p class="planet-property">Model: {{ starship.model }}</p>
+        <p class="planet-property">Manufacturer: {{ starship.manufacturer }} </p>
+        <p class="planet-property">Cost: {{ starship.cost_in_credits }} </p>
+        <p class="planet-property">Max atmosphering speed: {{ starship.max_atmosphering_speed }}</p>
+        <p class="planet-property">Passengers: {{ starship.passengers }} </p>
+        <p class="planet-property">Cargo capacity: {{ starship.cargo_capacity }} </p>
+        <p class="planet-property">Consumables: {{ starship.consumables }}</p>
+    </div>
+
+</div>
+<div *ngIf="starships.length == 0" class="no-planets">
+    No available starhips.
+</div>
