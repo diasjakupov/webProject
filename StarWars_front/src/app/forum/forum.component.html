@@ -1,14 +1,4 @@
 <div class="forum-container">
   <button [routerLink]="['/post']"  type="button">Create a Post</button>
 </div>
-<div class="posts-container">
-  <div *ngFor="let post of posts">
-    <h1></h1>
-    [postTime]="post.postTime"
-    [commentsCount]="post.commentsCount"
-    [likesCount]="post.likesCount"
-    [text]="post.text"
-    [tile]="post.title">
 
-  </div>
-</div>

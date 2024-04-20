@@ -9,11 +9,12 @@ import { User } from "../basicModels/user";
   styleUrl: './bottom-posts.component.css'
 })
 export class BottomPostsComponent {
-
-  nickname: string = '' ;
-  postTime: string = new Date().toLocaleString();
-  commentsCount: number = 0;
-  likesCount: number = 0 ;
+  author: string = '' ;
+  title: string ='' ;
+  content: string = '';
+  createdDate: Date = new Date();
+  likes: number = 0;
+  comments: number = 0 ;
   text: string = '';
-  title: string = '';
+  updated: null | undefined;
 }
