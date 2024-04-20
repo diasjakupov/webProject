@@ -26,7 +26,7 @@ export class LoginComponent {
       if (isLogged) {
         this.router.navigate(['/']);
       } else {
-        this.error = "Invalid username or password"; 
+        this.error = "Invalid username or password";
       }
     });
   }
