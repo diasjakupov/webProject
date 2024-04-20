@@ -5,8 +5,8 @@ from user.models import *
 
 
 class PostSerializer(ModelSerializer):
-    created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
-    updated_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
+    updated_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
 
     class Meta:
         model = Post
