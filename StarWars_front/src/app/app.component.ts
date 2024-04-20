@@ -4,6 +4,8 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { LoginService } from "./login.service";
+import { LoginComponent } from "./login/login.component";
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,19 @@ import { HomeComponent } from './home/home.component';
 })
 export class AppComponent {
   title = 'StarWars';
+  isLoggedIn: boolean = true ;
 
-  constructor(private viewportScroller: ViewportScroller) {}
+  constructor(private viewportScroller: ViewportScroller, private loginService: LoginService) { }
+
+  /*ngOnInit() {
+    this.isLoggedIn = this.loginService.isLoggedIn();
+  }*/
 
   scrollDown(): void {
     this.viewportScroller.scrollToAnchor('result');
+  }
+
+  logout() {
+    this.loginService.logout()
   }
 }
