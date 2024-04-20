@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'social',
     'rest_framework',
     'rest_framework_simplejwt',
-        'corsheaders',
+    'corsheaders',
 
 ]
 

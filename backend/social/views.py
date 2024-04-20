@@ -35,8 +35,11 @@ class LikeListView(generics.ListAPIView):
 def like_post(request):
 
     user = request.user
-
+    
     post_id = request.data.get('post_id')
+
+    if not post_id:
+        return Response({'post_id': 'post_id required.'}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
         post = Post.objects.get(id=post_id)
@@ -48,22 +51,13 @@ def like_post(request):
         like.delete()
         return Response({'message': 'Like already exists.'}, status=status.HTTP_409_CONFLICT)
 
-
-    serializer = LikeSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    like = Like.objects.create(user=user, post=post)
+    return Response({'liked': True})
 
 
-@api_view(["POST", "GET"])
+@api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def user_post(request):
-
-    if request.method == "GET":
-        posts = Post.objects.all()
-        serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data)
 
     if request.method == "POST":
         serializer = PostSerializer(data=request.data)
