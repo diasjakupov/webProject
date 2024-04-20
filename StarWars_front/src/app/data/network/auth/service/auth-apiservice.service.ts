@@ -11,6 +11,7 @@ import { Observable, catchError, map, of, switchMap } from 'rxjs';
 export class AuthAPIServiceService {
   private tokenGet = `${BASE_URL}token/`
   private tokenRefresh = `${BASE_URL}token/refresh/`
+  private register_url = `${BASE_URL}users/all/`
 
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorageServiceService) {}
@@ -35,6 +36,23 @@ export class AuthAPIServiceService {
       catchError(error => {
         console.log(error);
         console.error('Login failed:', error);
+        return of(false); // Handle errors or propagate them as needed
+      })
+    );
+  }
+
+  register(username: string, password: string, email: string): Observable<boolean>{
+    return this.httpClient.post(this.register_url, {
+      "username": username,
+      "password": password,
+      "email": email
+    }).pipe(
+      map(()=>{
+        return true
+      }),
+      catchError(error => {
+        console.log(error);
+        console.error('Register failed:', error);
         return of(false); // Handle errors or propagate them as needed
       })
     );

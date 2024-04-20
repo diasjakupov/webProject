@@ -12,6 +12,7 @@
       <label for="email">Email</label>
       <input type="text" id="email" class="form-input" ngModel name="email" required>
     </div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div> 
     <div class="lower-form">
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Sign Up</button>
       <nav>
