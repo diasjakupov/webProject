@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BASE_URL } from '../../constant';
+import { ACCESS, BASE_URL, REFRESH } from '../../constant';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageServiceService } from '../../localstorage/local-storage-service.service';
 import { JWTResponse } from '../JWTResponse';
-import { Observable, catchError, map, of, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,9 @@ export class AuthAPIServiceService {
   private tokenRefresh = `${BASE_URL}token/refresh/`
   private register_url = `${BASE_URL}users/all/`
 
+  private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
+
+  isLoggedIn = this.loggedIn.asObservable();
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorageServiceService) {}
 
@@ -29,17 +32,22 @@ export class AuthAPIServiceService {
         if (tokens.access && tokens.refresh) {
           this.localStorage.setItem("access", tokens.access);
           this.localStorage.setItem("refresh", tokens.refresh);
+          this.loggedIn.next(true); 
           return true;
         }
+        this.loggedIn.next(false);
         return false;
       }),
       catchError(error => {
         console.log(error);
         console.error('Login failed:', error);
+        this.loggedIn.next(false);
         return of(false); // Handle errors or propagate them as needed
       })
     );
   }
+
+
 
   register(username: string, password: string, email: string): Observable<boolean>{
     return this.httpClient.post(this.register_url, {
@@ -58,7 +66,13 @@ export class AuthAPIServiceService {
     );
   }
 
+
   logout(){
     this.localStorage.clear()
+    this.loggedIn.next(false);
+  }
+
+  private hasToken(): boolean {
+    return !!this.localStorage.getItem(ACCESS) && !!this.localStorage.getItem(REFRESH);
   }
 }
