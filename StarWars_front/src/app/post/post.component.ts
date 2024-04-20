@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-post',
@@ -14,7 +14,8 @@ import {FormsModule} from "@angular/forms";
 })
 export class PostComponent {
 
+  // **Функция для отправки:**
   onSubmit(f: any) {
-
+  /*нужно дополнить*/
   }
 }

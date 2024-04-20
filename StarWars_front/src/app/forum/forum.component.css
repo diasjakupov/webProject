@@ -9,9 +9,9 @@ button {
   font-family: DINNext, Matterhorn, Helvetica, sans-serif;
   font-weight: 800;
   border-color: #ffe81f;
-  display: block; /* Занимает всю ширину контейнера */
-  margin: 0 auto; /* Центрирует кнопку по вертикали */
-  padding: 15px 30px; /* Увеличивает размер кнопки */
-  font-size: 18px; /* Увеличивает размер текста */
+  display: block; 
+  margin: 0 auto;
+  padding: 15px 30px;
+  font-size: 18px;
 }
 

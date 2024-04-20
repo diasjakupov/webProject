@@ -10,6 +10,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./registration/registration.component";
 import { ForumComponent } from "./forum/forum.component";
 import {PostComponent} from "./post/post.component";
+import {BottomPostsComponent} from "./bottom-posts/bottom-posts.component";
 
 export const routes: Routes = [
     {
@@ -37,6 +38,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'post', component: PostComponent },
+  { path: 'bottom-posts', component: BottomPostsComponent},
     {
         path: 'planet/:name',
         component: PlanetdetailComponent,

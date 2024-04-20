@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Planet } from '../planets';
-import { PlanetsService } from '../planets.service';
+import { Planet } from '../planets/planets';
+import { PlanetsService } from '../planets/planets.service';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';

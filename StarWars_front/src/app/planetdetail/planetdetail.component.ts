@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Planet } from '../planets';
-import { PlanetsService } from '../planets.service';
+import { Planet } from '../planets/planets';
+import { PlanetsService } from '../planets/planets.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { Film } from '../film';
-import { FilmService } from '../film.service';
-import { CharacterService } from '../character.service';
-import { Character } from '../character';
+import { Film } from '../film/film';
+import { FilmService } from '../film/film.service';
+import { CharacterService } from '../character/character.service';
+import { Character } from '../character/character';
 
 @Component({
   selector: 'app-planetdetail',
@@ -39,8 +39,8 @@ export class PlanetdetailComponent {
       console.log(this.people)
       this.getFilmsDetail(this.planet.films)
     })
-    
-    
+
+
   }
 
   getPeopleDetail(residentsUrls: string[]){
@@ -51,7 +51,7 @@ export class PlanetdetailComponent {
       console.log(this.people)
     });
   }
-  
+
   getFilmsDetail(filmsUrls: string[]){
     const films: Observable<Film>[] = filmsUrls.map(url => this.filmService.getFilm(url));
 

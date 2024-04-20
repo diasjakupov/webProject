@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Planet } from '../planets';
-import { PlanetsService } from '../planets.service';
+import { Planet } from '../planets/planets';
+import { PlanetsService } from '../planets/planets.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { Film } from '../film';
-import { FilmService } from '../film.service';
-import { Character } from '../character';
-import { Starship } from '../starship';
-import { CharacterService } from '../character.service';
-import { StarshipService } from '../starship.service';
+import { Film } from '../film/film';
+import { FilmService } from '../film/film.service';
+import { Character } from '../character/character';
+import { Starship } from '../starship/starship';
+import { CharacterService } from '../character/character.service';
+import { StarshipService } from '../starship/starship.service';
 
 @Component({
   selector: 'app-characterdetail',
@@ -43,12 +43,12 @@ export class CharacterdetailComponent {
       this.getFilmsDetail(this.character.films)
       this.getStarships(this.character.starships)
     })
-    
+
   }
 
   getPlanet(planetUrl: string){
     this.planetService.getPlanetById(planetUrl).subscribe((data) => {
-      
+
       this.homeworld = data
       console.log(this.homeworld)
     })

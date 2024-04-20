@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { StarshipService } from '../starship.service';
+import { StarshipService } from '../starship/starship.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Starship } from '../starship';
+import { Starship } from '../starship/starship';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
@@ -22,7 +22,7 @@ export class StarshipsComponent implements OnInit {
   private currentSearch: string = '';
 
   constructor(private starshipService: StarshipService, private dataService: DataService){ }
-  
+
   ngOnInit(): void {
     this.loadStarships('')
     this.dataSubscription = this.dataService.getData().subscribe(data => {

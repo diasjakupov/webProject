@@ -3,12 +3,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { Film } from '../film';
-import { FilmService } from '../film.service';
-import { Starship } from '../starship';
-import { StarshipService } from '../starship.service';
-import { CharacterService } from '../character.service';
-import { Character } from '../character';
+import { Film } from '../film/film';
+import { FilmService } from '../film/film.service';
+import { Starship } from '../starship/starship';
+import { StarshipService } from '../starship/starship.service';
+import { CharacterService } from '../character/character.service';
+import { Character } from '../character/character';
 
 @Component({
   selector: 'app-starshipdetail',
@@ -47,7 +47,7 @@ export class StarshipdetailComponent {
       this.pilots = residentsDetails;
     });
   }
-  
+
   getFilmsDetail(filmsUrls: string[]){
     const films: Observable<Film>[] = filmsUrls.map(url => this.filmService.getFilm(url));
 

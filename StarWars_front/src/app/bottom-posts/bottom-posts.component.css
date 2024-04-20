@@ -1,0 +1,33 @@
+.about-post {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.post-time {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.post-content {
+  margin-bottom: 0.5rem;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comments-count,
+.likes-count {
+  font-size: 0.8rem;
+}
