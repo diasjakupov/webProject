@@ -8,6 +8,7 @@
       <label for="password">Password</label>
       <input type="password" id="password" class="form-input" ngModel name="password" required>
     </div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div> 
     <div class="lower-form">
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
       <nav>
