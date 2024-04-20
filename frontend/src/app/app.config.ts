@@ -7,12 +7,12 @@ import {MatButton} from "@angular/material/button";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatButton, /* другие модули */],
+  imports: [CommonModule, MatButton, ],
   templateUrl: './pages/home/home.component.html',
   styleUrls: ['./pages/home/home.component.css']
 })
 export class HomeComponent {
-  // Логика компонента...
+
 }
 
 export const appConfig: ApplicationConfig = {
