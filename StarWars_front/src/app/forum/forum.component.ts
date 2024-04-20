@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })

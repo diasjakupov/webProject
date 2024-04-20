@@ -1,0 +1,17 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" id="title" class="form-input" ngModel name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="text" class="form-label">Text</label>
+      <textarea id="text" class="form-input" ngModel name="text" required></textarea> </div>
+    <div class="lower-form">
+      <nav>
+        <button [routerLink]="['/forum']" class="signup-link">Post</button>
+      </nav>
+    </div>
+  </form>
+</div>
+
