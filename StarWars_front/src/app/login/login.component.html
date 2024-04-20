@@ -1,0 +1,19 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" class="form-input" ngModel name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="form-input" ngModel name="password" required>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div> 
+    <div class="lower-form">
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
+      <nav>
+        <a [routerLink]="['/register']" class="signup-link">Sign Up</a>
+      </nav>
+    </div>
+  </form>
+</div>
