@@ -1,5 +1,6 @@
 .forum-container {
   text-align: center; /* Центрирует кнопку по горизонтали */
+  padding-top: 30px;
 }
 
 button {

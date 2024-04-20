@@ -9,6 +9,7 @@ import { CharacterdetailComponent } from './characterdetail/characterdetail.comp
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./registration/registration.component";
 import { ForumComponent } from "./forum/forum.component";
+import {PostComponent} from "./post/post.component";
 
 export const routes: Routes = [
     {
@@ -35,6 +36,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forum', component: ForumComponent },
+  { path: 'post', component: PostComponent },
     {
         path: 'planet/:name',
         component: PlanetdetailComponent,
