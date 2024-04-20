@@ -1,0 +1,17 @@
+<div class="results" id="result">
+    <!-- planet-card.component.html -->
+    <div *ngFor="let planet of planets" class="planet-card" [routerLink]="['/planet', planet.name]">
+        <h2 class="planet-name"> <img width="64" height="64" src="https://img.icons8.com/cotton/64/planet--v1.png" alt="planet--v1"/> {{ planet.name }}</h2>
+        <p class="planet-property">Rotation Period: {{ planet.rotation_period }}</p>
+        <p class="planet-property">Orbital Period: {{ planet.orbital_period }}</p>
+        <p class="planet-property">Diameter: {{ planet.diameter }}</p>
+        <p class="planet-property">Climate: {{ planet.climate }}</p>
+        <p class="planet-property">Gravity: {{ planet.gravity }}</p>
+        <p class="planet-property">Terrain: {{ planet.terrain }}</p>
+        <p class="planet-property">Population: {{ planet.population }}</p>
+    </div>
+
+</div>
+<div *ngIf="planets.length == 0" class="no-planets">
+    No available planets.
+</div>

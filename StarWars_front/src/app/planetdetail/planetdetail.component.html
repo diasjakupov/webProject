@@ -1,0 +1,33 @@
+<div class="planet-page">
+    <div class="planet-container">
+        <div class="planet-image">
+            <img src="https://upload.wikimedia.org/wikipedia/ru/8/8d/DeathStar1.jpg" alt="Картинка Планеты">
+        </div>
+        <div class="planet-info">
+            <p>Name: {{ planet.name }}</p>
+            <p>Rotation period: {{ planet.rotation_period }} hour</p>
+            <p>Orbital period: {{ planet.orbital_period }} days</p>
+            <p>Diameter: {{ planet.diameter }} km</p>
+            <p>Climate: {{ planet.climate }}</p>
+            <p>Gravity: {{ planet.gravity }}</p>
+            <p>Terrain: {{ planet.terrain }}</p>
+            <p>Population: {{ planet.population }}</p>
+        </div>
+    </div>
+
+    <div class="residents-container">
+        <h2>Residents</h2>
+        <div class="residents-list">
+            <h1 *ngIf="!people">No residents</h1>
+            <p *ngFor="let p of people"><a style="color: aliceblue;" [routerLink]="['/character', p.name]">{{ p.name }}</a> </p>
+        </div>
+    </div>
+
+    <div class="films-container">
+        <h2>Films</h2>
+        <div class="films-list">
+            <h1 *ngIf="!films">No films</h1>
+            <p *ngFor="let f of films">{{ f.title }}</p>
+        </div>
+    </div>
+</div>

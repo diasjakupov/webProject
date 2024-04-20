@@ -1,0 +1,33 @@
+<div class="planet-page">
+    <div class="planet-container">
+        <div class="planet-image">
+            <img src="https://img.icons8.com/?size=256&id=1eGeikx9BzTw&format=png" alt="Картинка Планеты">
+        </div>
+        <div class="planet-info">
+            <p>Name: {{ character.name }}</p>
+            <p>Height: {{ character.height }}</p>
+            <p>Homeworld: <a style="color: aliceblue;" [routerLink]="['/planet', homeworld.name]">{{ homeworld.name }}</a></p>
+            <p>Hair color: {{ character.hair_color }}</p>
+            <p>Skin color: {{ character.skin_color }}</p>
+            <p>Eye color: {{ character.eye_color }} </p>
+            <p>Birth year: {{ character.birth_year }} </p>
+            <p>Gender: {{ character.gender }} </p>
+        </div>
+    </div>
+
+    <div class="residents-container">
+        <h2>Starships</h2>
+        <div class="residents-list">
+            <h1 *ngIf="!starships">No Starships</h1>
+            <p *ngFor="let s of starships"><a style="color: aliceblue;" [routerLink]="['/starship', s.name]">{{ s.name }}</a>  </p>
+        </div>
+    </div>
+
+    <div class="films-container">
+        <h2>Films</h2>
+        <div class="films-list">
+            <h1 *ngIf="!films">No films</h1>
+            <p *ngFor="let f of films">{{ f.title }}</p>
+        </div>
+    </div>
+</div>

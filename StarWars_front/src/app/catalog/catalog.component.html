@@ -1,0 +1,51 @@
+<div class="bg">
+    <div class="section">
+        <form>
+            <input type="text" placeholder="Search" [(ngModel)]="text" [ngModelOptions]="{standalone: true}">
+        </form>
+        <section>
+            <router-outlet></router-outlet>
+        </section>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section star-wars">
+        <div class="crawl">
+          <div class="title">
+            <p>Welcome to the Star Wars Universe!</p>
+          </div>
+          <p>Embark on a journey where galaxies are boundless and the possibilities for exploration are endless. Dive deep
+            into the saga and discover the iconic heroes, nefarious villains, mystical planets, and mighty starships that
+            make up the rich tapestry of Star Wars.</p>
+          <p><strong>Characters: Heroes and Villains</strong> - Delve into the profiles of characters that have captured
+            the hearts of millions. From wise Jedi to cunning Sith, each profile offers a detailed biography, key moments
+            in their stories, and their impact on the galaxy.</p>
+          <p><strong>Planets: From Alderaan to Ziost</strong> - Travel to planets that have been the epicenters of major
+            battles and historical events. Each planet is described with detailed maps, climatic features, and historical
+            context.</p>
+          <p><strong>Starships: Engineering Marvels</strong> - Explore detailed schematics and technical specifications of
+            famous ships like the Millennium Falcon and the Death Star. Learn about their weaponry, speed, and the
+            missions they were crafted for.</p>
+          <p>Join our vibrant community of fans and enthusiasts through forums and social media. Participate in
+            discussions, share your theories, fan art, and become part of our galactic family.</p>
+          <p><strong>Begin your adventure now and discover a galaxy of possibilities!</strong></p>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: info&#64;starwars.com</p>
+        <p>Phone: (123) 456-7890</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <p><a>Facebook</a></p>
+        <p><a>Twitter</a></p>
+        <p><a href="https://www.instagram.com/damir_mkll/">Instagram</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Star Wars Universe | Designed by Mkll
+    </div>
+  </footer>
+
