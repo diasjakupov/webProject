@@ -1,0 +1,12 @@
+<div class="section-text">
+    <div class="center-content">
+        <p>Discover the rich and diverse world of Star Wars</p>
+        <h1>Uncover the Mysteries</h1>
+        <p>Immerse Yourself in the Iconic Characters, Planets, and Spaceships of the Star Wars Saga</p>
+        <p style="margin-top: 17%; font-style: italic;">Experience the epic saga like never before</p>
+        <button [routerLink]="['characters']" (click)="scrollDown()">View Characters</button>
+        <button [routerLink]="['/']" (click)="scrollDown()">View Planets</button>
+        <button [routerLink]="['starships']" (click)="scrollDown()">View Starships</button>
+    </div>
+</div>
+<app-catalog></app-catalog>

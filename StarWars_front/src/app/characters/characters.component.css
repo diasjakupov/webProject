@@ -1,0 +1,108 @@
+.results {
+    display: grid;
+    column-gap: 14px;
+    row-gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+    margin-top: 50px;
+    justify-content: space-around;
+    padding-bottom: 7%;
+}
+
+.listing {
+    background-color: firebrick;
+    border-radius: 30px;
+}
+
+.listing-heading {
+    color: aliceblue;
+    padding: 10px 20px 0 20px;
+}
+
+.planet-card {
+    border: 2px solid #4e4e50;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #acb0b2;
+    background: linear-gradient(145deg, #a1a1a5, #2b2b32);
+    color: #171616;
+    box-shadow: 0 0px 30px rgba(255, 255, 255, 0.661);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planet-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 0px 35px rgb(230, 52, 52);
+}
+
+.planet-name {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15%;
+    font-size: 24px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.planet-property {
+
+    margin-bottom: 5px;
+}
+
+.planet-residents {
+    margin-top: 10px;
+}
+
+.resident-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.resident-list-item {
+    margin-bottom: 5px;
+}
+
+.no-planets {
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding-bottom: 7%;
+}
+
+@media only screen and (max-width: 768px) {
+    .results {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .planet-name {
+        margin-left: 10%;
+        margin-bottom: 10%;
+    }
+
+    .planet-card {
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .results {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        padding-bottom: 14px;
+    }
+
+    .planet-card {
+        margin-bottom: 10px;
+    }
+
+    .planet-name {
+        margin-left: 0;
+        margin-bottom: 10%;
+        text-align: center;
+    }
+
+    .planet-property {
+        margin-bottom: 3px;
+    }
+}
