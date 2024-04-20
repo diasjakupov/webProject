@@ -4,7 +4,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { LoginService } from "./login.service";
+import { LoginService } from "./login/login.service";
 import { LoginComponent } from "./login/login.component";
 
 @Component({
