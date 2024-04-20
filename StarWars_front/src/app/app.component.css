@@ -1,10 +1,13 @@
 .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    padding: 10px 20px;
+  display: flex;
+  flex-direction: row; /* Keep elements in a row */
+  align-items: center; /* Align vertically */
+  background-color: #000;
+  padding: 10px 20px;
+  justify-content: space-between; /* Distribute elements evenly with margins on sides */
 }
+
+
 
 .logo-container {
     cursor: pointer;
@@ -34,7 +37,7 @@
 }
 
 .navbar {
-    background-color: #333;
+    background-color: black;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -93,7 +96,6 @@
 }
 
 
-
 @media (max-width: 768px) {
 
     .site-header,
@@ -148,3 +150,8 @@
     display: block;
     opacity: 1;
 }
+
+#upper-header {
+   justify-content: flex-end;
+}
+

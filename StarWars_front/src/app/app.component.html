@@ -3,8 +3,6 @@
     <img src="https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254"
       alt="Star Wars Logo" class="logo" [routerLink]="['/']">
   </div>
-</header>
-<div class="video-films-container">
   <nav class="navbar">
     <ul class="nav-menu">
       <li class="nav-item">
@@ -25,7 +23,13 @@
           <a [routerLink]="['/starships']" (click)="scrollDown()">View starships</a>
         </div>
       </li>
+      <li class="nav-item" id="upper-header">
+        <a class="nav-link" [routerLink]="['/login']">Log In</a>
+      </li>
+
     </ul>
+
   </nav>
-</div>
+</header>
+
 <router-outlet></router-outlet>

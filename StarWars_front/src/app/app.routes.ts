@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { StarshipdetailComponent } from './starshipdetail/starshipdetail.component';
 import { CharactersComponent } from './characters/characters.component';
 import { CharacterdetailComponent } from './characterdetail/characterdetail.component';
+import { LoginComponent } from "./login/login.component";
+import {RegisterComponent } from "./registration/registration.component";
 
 export const routes: Routes = [
     {
@@ -29,6 +31,8 @@ export const routes: Routes = [
             }
         ]
     },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
     {
         path: 'planet/:name',
         component: PlanetdetailComponent,
