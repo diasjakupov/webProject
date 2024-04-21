@@ -9,8 +9,11 @@ import { CharacterdetailComponent } from './characterdetail/characterdetail.comp
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./registration/registration.component";
 import { ForumComponent } from "./forum/forum.component";
-import {PostComponent} from "./post/post.component";
-import {BottomPostsComponent} from "./bottom-posts/bottom-posts.component";
+import { PostComponent } from "./post/post.component";
+import { BottomPostsComponent } from "./bottom-posts/bottom-posts.component";
+import { CommentComponent } from "./comment/comment.component";
+import { ComentateComponent } from "./comentate/comentate.component";
+
 
 export const routes: Routes = [
     {
@@ -38,7 +41,9 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'post', component: PostComponent },
-  { path: 'bottom-posts', component: BottomPostsComponent},
+  { path: 'bottom-posts', component: BottomPostsComponent },
+  { path: 'comment', component: CommentComponent },
+  { path: 'comentate', component: ComentateComponent },
     {
         path: 'planet/:name',
         component: PlanetdetailComponent,

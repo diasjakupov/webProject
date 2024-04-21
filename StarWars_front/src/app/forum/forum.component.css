@@ -1,6 +1,8 @@
 .forum-container {
   text-align: center; /* Центрирует кнопку по горизонтали */
-  padding-top: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
 }
 
 button {
@@ -9,7 +11,7 @@ button {
   font-family: DINNext, Matterhorn, Helvetica, sans-serif;
   font-weight: 800;
   border-color: #ffe81f;
-  display: block; 
+  display: block;
   margin: 0 auto;
   padding: 15px 30px;
   font-size: 18px;

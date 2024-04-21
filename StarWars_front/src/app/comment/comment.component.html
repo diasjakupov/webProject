@@ -1,0 +1,17 @@
+<div class="comment-container">
+  <button [routerLink]="['/comentate']">Leave a Comment</button>
+</div>
+
+<div *ngFor="let comment of comments">
+  <div class="about-post">
+    <div class="post-header">
+      <span class="author">{{ comment.author }}</span>
+      <span class="post-time">{{ comment.createdDate }}</span>
+    </div>
+    <div class="post-content">
+      <h3>{{ comment.post }}</h3>
+      <h4>{{ comment.content }}</h4>
+    </div>
+  </div>
+</div>
+

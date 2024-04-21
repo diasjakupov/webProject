@@ -1,3 +1,22 @@
+.comment-container {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+}
+
+button {
+  background-color: #ffe81f;
+  border-radius: 4px;
+  font-family: DINNext, Matterhorn, Helvetica, sans-serif;
+  font-weight: 800;
+  border-color: #ffe81f;
+  display: block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  font-size: 18px;
+}
+
 .about-post {
   border: 2px solid yellow;
   border-radius: 20px;
@@ -82,4 +101,5 @@ p {
   margin: auto ;
   justify-content: end;
 }
+
 
