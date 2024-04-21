@@ -30,4 +30,60 @@
 .comments-count,
 .likes-count {
   font-size: 0.8rem;
+  margin: 0;
 }
+
+
+.btn-like {
+  width: 1.25rem;
+  height: 1rem;
+  margin: 0 10px;  /* Add some margin between button and text */
+
+  /* Rest of your styles for the button */
+
+
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+
+  cursor: pointer;
+}
+
+.btn-like:active {
+  color: red;
+}
+
+.btn-like:hover::before,
+.btn-like:hover::after {
+  background: #ffe81f;
+}
+
+.btn-like::before,
+.btn-like::after {
+  content: "";
+
+  position: absolute;
+
+  width: 1.25rem;
+  height: 2rem;
+
+  background: #9ca3af;
+  border-radius: 5rem 5em 1rem 1rem;
+}
+
+.btn-like::before {
+  left: 1.25rem; /* Half the original width */
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.btn-like::after {
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+p {
+  margin: auto ;
+  justify-content: end;
+}
+

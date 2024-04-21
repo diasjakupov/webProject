@@ -5,10 +5,14 @@
   </div>
   <div class="post-content">
     <h3>{{ title }}</h3>
-    <p>{{ content }}</p>
+    <h4>{{ content }}</h4>
   </div>
   <div class="post-footer">
     <span class="comments-count">Comments: {{ comments }}</span>
-    <span class="likes-count">Likes: {{ likes }}</span>
+    <div class="like-container">
+      <div class="btn-like"></div>
+      <p class="likes-count">{{likes}}</p>
+    </div>
   </div>
 </div>
+
