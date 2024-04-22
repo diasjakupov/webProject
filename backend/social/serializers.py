@@ -1,16 +1,28 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
+
+from user.serializers import SocialUserSerializer
 from .models import Post, Comment, Like
 from user.models import *
 
 
 class PostSerializer(ModelSerializer):
+    author = SocialUserSerializer(read_only=True)
+    like_count = serializers.SerializerMethodField()
+    comment_count = serializers.SerializerMethodField()
     created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
     updated_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
 
     class Meta:
         model = Post
-        fields = ("__all__")
+        fields = "__all__"
+
+    def get_like_count(self, obj):
+        return Like.objects.filter(post=obj).count()
+
+    def get_comment_count(self, obj):
+        return Comment.objects.filter(post=obj).count()
+
 
 
 class CommentSerializer(ModelSerializer):

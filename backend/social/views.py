@@ -58,13 +58,16 @@ def like_post(request):
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def user_post(request):
-
     if request.method == "POST":
-        serializer = PostSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        title = request.data.get("title")
+        content = request.data.get("content")
+        author_id = request.user
+        try:
+            Post.objects.create(title = title, content = content, author = author_id)
+            return Response(status=status.HTTP_201_CREATED)
+        except Exception as e:
+            print(request.data)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['PUT', 'DELETE'])

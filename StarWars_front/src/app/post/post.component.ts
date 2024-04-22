@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
+import { PostAPIService } from '../data/network/social/post-api.service';
 
 @Component({
   selector: 'app-post',
@@ -14,8 +15,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class PostComponent {
 
-  // **Функция для отправки:**
-  onSubmit(f: any) {
-  /*нужно дополнить*/
+  constructor(private api: PostAPIService, private router: Router){}
+
+  onSubmit(form: NgForm) {
+    if(form.valid){
+      this.api.createPost(form.value['title'], form.value['text']).subscribe({
+        next: (res: any) => {
+          this.router.navigate(['/forum']); 
+        }
+      });
+    }
   }
 }

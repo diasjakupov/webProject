@@ -1,16 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
+import { Observable, throwError, of, EMPTY } from 'rxjs';
 import { catchError, switchMap, take } from 'rxjs/operators';
 import { LocalStorageServiceService } from '../../localstorage/local-storage-service.service';
 import { ACCESS, BASE_URL, REFRESH } from '../../constant';
+import { Router } from '@angular/router';
+import { AuthHeaders } from '../auth_headers';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageServiceService) {}
+  private headers = Object.values(AuthHeaders).filter((item) => {
+    return isNaN(Number(item));
+  });
+
+  constructor(private httpClient: HttpClient, private localStorage: LocalStorageServiceService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
     if (!req.url.startsWith(BASE_URL)) {
+      return next.handle(req);
+    }
+
+    if(!this.headers.some(header => req.headers.has(header))){
       return next.handle(req);
     }
 
@@ -18,28 +29,40 @@ export class AuthInterceptor implements HttpInterceptor {
       const newReq = req.clone({ headers: req.headers.delete('Skip-Interceptor') });
       return next.handle(newReq); 
     }
-  
+    console.log("after skip");
+    console.log(`${req.headers.keys()}`);
+
     const accessToken = this.localStorage.getItem(ACCESS);
-    
+
     if (!accessToken) {
-      return next.handle(req);  
+      this.router.navigate(['/login']);
+      return EMPTY
     }
 
+    console.log("Intercept");
+    
     return this.verifyAccessToken(accessToken).pipe(
-      switchMap((isValid) => {
+      switchMap((isValid) => {   
+        console.log(isValid);
+             
         if (isValid) {
           const authReq = req.clone({
             setHeaders: {
-              Authorization: `Bearer ${accessToken}`
+              Authorization: `Bearer ${this.localStorage.getItem(ACCESS)}`
             }
           });
+          console.log(authReq);
+          
           return next.handle(authReq);
         } else {
-          return next.handle(req);
+          console.log(isValid);
+          this.router.navigate(['/login']);
+          return EMPTY
         }
       }),
       catchError((error) => {
-        return throwError(() => new Error(`An error occurred during HTTP interception: ${error}`));
+        console.log("error")
+        return EMPTY
       })
     );
   }
@@ -54,28 +77,35 @@ export class AuthInterceptor implements HttpInterceptor {
         switchMap(res => {
           return of(res.status === 200);
         }),
-        catchError((error: HttpErrorResponse) => {
-          if (error.status === 401 || error.status === 403) {
-            return this.refreshAccessToken(this.localStorage.getItem(REFRESH) ?? '').pipe(
-              switchMap(newAccess => {
-                if (newAccess && newAccess.access) {
-                  this.localStorage.setItem(ACCESS, newAccess.access);
-                  return of(true);  
-                }
-                return of(false);  
-              }),
-              catchError((error) => {
-                return throwError(() => new Error(`An error occurred during refreshing: ${error}`));
-              })
-            );
-          }
-          return of(false);  
+        catchError((error) => {
+          return this.handleTokenError(error)
         })
       );
   }
 
+  private handleTokenError(error: HttpErrorResponse): Observable<boolean> {
+    console.log(`error ${error.message}`);
+    
+    if (error.status === 401 || error.status === 403) {      
+      return this.refreshAccessToken(this.localStorage.getItem(REFRESH) ?? '').pipe(
+        switchMap(newAccess => {
+          if (newAccess && newAccess.access) {
+            this.localStorage.setItem(ACCESS, newAccess.access);
+            return of(true);
+          }
+          return of(false);
+        }), 
+        catchError((error) => {
+          console.log("in handle");
+          return of(false)
+        })
+      );
+    }
+    return of(false);
+  }
+
   refreshAccessToken(token: string): Observable<any> { 
-    return this.httpClient.post<any>(`${BASE_URL}/token/refresh`, { "token": token }, { headers: { 'Skip-Interceptor': 'true' } });
+    return this.httpClient.post<any>(`${BASE_URL}token/refresh/`, { "refresh": token }, { headers: { 'Skip-Interceptor': 'true' } });
   }
 }
 

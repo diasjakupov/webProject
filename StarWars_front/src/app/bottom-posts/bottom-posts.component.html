@@ -1,17 +1,17 @@
-<div class="about-post">
+<div class="about-post" *ngFor = "let post of posts">
   <div class="post-header">
-    <span class="author">{{ author }}</span>
-    <span class="post-time">{{ createdDate }}</span>
+    <span class="author">{{ post.author }}</span>
+    <span class="post-time">{{ post.createdDate }}</span>
   </div>
   <div class="post-content">
-    <h3>{{ title }}</h3>
-    <h4>{{ content }}</h4>
+    <h3>{{ post.title }}</h3>
+    <h4>{{ post.content }}</h4>
   </div>
   <div class="post-footer">
-    <a [routerLink]="['/comment']" class="view-comments-btn"  >View Comments {{comments}}</a>
+    <a [routerLink]="['/comment']" class="view-comments-btn"  >View Comments {{post.comments}}</a>
     <div class="like-container">
       <div class="btn-like"></div>
-      <p class="likes-count">{{likes}}</p>
+      <p class="likes-count">{{post.likes}}</p>
     </div>
   </div>
 </div>
