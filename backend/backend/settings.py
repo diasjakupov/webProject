@@ -71,7 +71,7 @@ CORS_ALLOW_HEADERS = '*'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(seconds = 5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
+    'REFRESH_TOKEN_LIFETIME': timedelta(hours=1)
 }
 
 ROOT_URLCONF = 'backend.urls'

@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Post } from "../basicModels/post";
 import { Comment} from "../basicModels/comment";
 import { Like } from "../basicModels/like"
+import { AuthHeaders } from '../data/network/auth/auth_headers';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class BottomPostService {
 
   constructor(private http: HttpClient) {}
 
-  private baseUrl = 'http://127.0.0.1:8000/api/';
+  private baseUrl = 'http://127.0.0.1:8000/api/social/';
 
   // **Get All Posts:**
   getAllPosts(): Observable<Post[]> {
@@ -52,14 +53,12 @@ export class BottomPostService {
 
   // **Like a Post:** (assuming authentication is handled elsewhere)
   likePost(postId: number): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    const headers = {
+      headers: new HttpHeaders().set(AuthHeaders.LIKE_AUTH, AuthHeaders.LIKE_AUTH)
     };
-    const data = { post_id: postId };
-    return this.http.post<any>(this.baseUrl + 'like/', data, httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
+    console.log(this.baseUrl + 'like/')
+    const data = { 'post_id': postId };
+    return this.http.post(this.baseUrl + 'like/', data, headers)
   }
 
   // **Update a Post:** (assuming authentication and authorization are handled elsewhere)
