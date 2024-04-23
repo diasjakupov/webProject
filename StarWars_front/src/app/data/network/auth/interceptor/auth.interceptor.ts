@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log(`${req.headers.keys()}`);
 
     const accessToken = this.localStorage.getItem(ACCESS);
-
+    console.log("TEST: ", accessToken)
     if (!accessToken) {
       this.router.navigate(['/login']);
       return EMPTY

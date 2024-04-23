@@ -35,7 +35,7 @@ class LikeListView(generics.ListAPIView):
 def like_post(request):
 
     user = request.user
-    
+    print(1)
     post_id = request.data.get('post_id')
 
     if not post_id:
