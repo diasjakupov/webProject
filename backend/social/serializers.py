@@ -25,14 +25,22 @@ class PostSerializer(ModelSerializer):
 
 
 
-class CommentSerializer(ModelSerializer):
-    author = SocialUserSerializer(read_only = True)
-    created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
-    updated_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+class CommentSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    author = SocialUserSerializer(read_only=True)
+    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all())
+    content = serializers.CharField(max_length=1000)
+    created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+    updated_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
 
-    class Meta:
-        model = Comment
-        fields = ("__all__")
+    def create(self, validated_data):
+        return Comment.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.content = validated_data.get('content', instance.content)
+        instance.post = validated_data.get('post', instance.post)
+        instance.save()
+        return instance
 
 
 class LikeSerializer(serializers.Serializer):
