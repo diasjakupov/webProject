@@ -43,7 +43,8 @@ export const routes: Routes = [
   { path: 'post', component: PostComponent },
   { path: 'bottom-posts', component: BottomPostsComponent },
   { path: 'comment/:id', component: CommentComponent },
-  { path: 'comentate/:id', component: ComentateComponent },
+  { path: 'comentate/:post_id', component: ComentateComponent },
+  {path: 'comentate/:post_id/:comm_id', component: ComentateComponent},
     {
         path: 'planet/:name',
         component: PlanetdetailComponent,

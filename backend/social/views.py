@@ -34,14 +34,18 @@ class CommentListView(generics.ListCreateAPIView):
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         
-class CommentDetailView(generics.GenericAPIView, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+class CommentDetailView(generics.RetrieveAPIView,  mixins.DestroyModelMixin):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
     queryset = Comment.objects.all()
 
 
-    def put(self, request, *args, **kwars):
-        return self.update(request, args, kwars)
+    def put(self, request, *args, **kwargs):
+        serializer = CommentSerializer(Comment.objects.get(pk = kwargs.get('pk')), data = request.data, partial = True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_202_ACCEPTED)
+        return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, args, kwargs)

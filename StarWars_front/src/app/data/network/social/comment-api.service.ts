@@ -31,6 +31,36 @@ export class CommentAPIService {
     })
   }
 
+  updateComment(id: number, content: string): Observable<any>{
+    const payload = {
+      'content': content
+    }
+    const headers = new HttpHeaders().set(AuthHeaders.COMMENT_AUTH, AuthHeaders.COMMENT_AUTH)
+    return this.http.put(`${BASE_URL}social/comments/detail/${id}`, payload, {
+      headers: headers
+    })
+  }
+
+  getCommentById(comm_id: number): Observable<Comment>{
+    const headers = new HttpHeaders().set(AuthHeaders.COMMENT_AUTH, AuthHeaders.COMMENT_AUTH)
+
+    return this.http.get<CommentNetworkModel>(`${BASE_URL}social/comments/detail/${comm_id}`, {
+      headers: headers
+    }).pipe(
+      map((comm: CommentNetworkModel) => 
+        ({
+          id: comm.id,
+          author: comm.author.username,
+          post: comm.post,
+          author_id: comm.author.id,
+          content: comm.content,
+          createdDate: new Date(comm.created_date),
+          updated: comm.updated_date ? new Date(comm.updated_date) : null
+        }  as Comment)
+      ))
+    
+  }
+
   getAllComments(post_id: number): Observable<Comment[]>{
     return this.http.get<CommentNetworkModel[]>(`${BASE_URL}social/comments/${post_id}`).pipe(
       map((comments: CommentNetworkModel[]) => comments.map(comm=> 

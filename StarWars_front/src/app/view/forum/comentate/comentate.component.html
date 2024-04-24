@@ -2,7 +2,7 @@
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form-group">
       <label for="comment" class="form-label">Comment</label>
-      <textarea id="comment" class="form-input" ngModel name="comment" required></textarea> </div>
+      <textarea id="comment" class="form-input" [(ngModel)] = "comment.content" name="comment" required></textarea> </div>
     <div class="lower-form">
       <nav>
         <button class="signup-link">Post</button>

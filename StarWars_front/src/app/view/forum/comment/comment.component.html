@@ -13,7 +13,7 @@
       <h4>{{ comment.content }}</h4>
     </div>
     <div class="post-actions">
-      <!-- <button (click)="updateComment(comment.id)">Update</button> -->
+      <button *ngIf = "userId == comment.author_id" [routerLink]="['/comentate', post, comment.id]">Update</button>
       <button *ngIf = "userId == comment.author_id"(click)="deleteComment(comment.id)">Delete</button>
     </div>
   </div>
