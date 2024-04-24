@@ -5,6 +5,8 @@ from .models import SocialUser
 from .serializers import SocialUserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import response, status
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomTokenObtainPairSerializer
 
 # Create your views here.
 
@@ -27,5 +29,9 @@ class SocialUserListView(generics.GenericAPIView, mixins.ListModelMixin, mixins.
             return response.Response({"success": "User created successfully"}, status=status.HTTP_201_CREATED)
         except IntegrityError as e:
             return response.Response({"error_field": e}, status=status.HTTP_400_BAD_REQUEST)
+        
     
 
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer

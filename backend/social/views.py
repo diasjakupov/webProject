@@ -6,7 +6,7 @@ from .serializers import PostSerializer, CommentSerializer, LikeSerializer
 from .models import Post, Comment, Like
 from user.models import *
 from rest_framework.response import Response
-from rest_framework import status, permissions
+from rest_framework import status, permissions, mixins
 # Create your views here.
 
 
@@ -33,6 +33,18 @@ class CommentListView(generics.ListCreateAPIView):
             return Response(status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+        
+class CommentDetailView(generics.GenericAPIView, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Comment.objects.all()
+
+
+    def put(self, request, *args, **kwars):
+        return self.update(request, args, kwars)
+    
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, args, kwargs)
         
     
 class LikeListView(generics.ListAPIView):

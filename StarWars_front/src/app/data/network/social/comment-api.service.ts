@@ -24,6 +24,13 @@ export class CommentAPIService {
     })
   }
 
+  deleteComment(id: number): Observable<any>{
+    const headers = new HttpHeaders().set(AuthHeaders.COMMENT_AUTH, AuthHeaders.COMMENT_AUTH)
+    return this.http.delete(`${BASE_URL}social/comments/detail/${id}`, {
+      headers: headers
+    })
+  }
+
   getAllComments(post_id: number): Observable<Comment[]>{
     return this.http.get<CommentNetworkModel[]>(`${BASE_URL}social/comments/${post_id}`).pipe(
       map((comments: CommentNetworkModel[]) => comments.map(comm=> 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ACCESS, BASE_URL, REFRESH } from '../../constant';
+import { ACCESS, BASE_URL, REFRESH, USER_ID } from '../../constant';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageServiceService } from '../../localstorage/local-storage-service.service';
 import { JWTResponse } from '../JWTResponse';
@@ -26,12 +26,11 @@ export class AuthAPIServiceService {
       username: username,
       password: password
     }).pipe(
-      map(tokens => {
-        console.log(tokens);
-        
+      map(tokens => {        
         if (tokens.access && tokens.refresh) {
-          this.localStorage.setItem("access", tokens.access);
-          this.localStorage.setItem("refresh", tokens.refresh);
+          this.localStorage.setItem(ACCESS, tokens.access);
+          this.localStorage.setItem(REFRESH, tokens.refresh);
+          this.localStorage.setItem(USER_ID, String(tokens.user_id))
           this.loggedIn.next(true); 
           return true;
         }
@@ -42,7 +41,7 @@ export class AuthAPIServiceService {
         console.log(error);
         console.error('Login failed:', error);
         this.loggedIn.next(false);
-        return of(false); // Handle errors or propagate them as needed
+        return of(false);
       })
     );
   }
