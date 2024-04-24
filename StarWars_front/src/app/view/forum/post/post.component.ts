@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
-import { PostAPIService } from '../data/network/social/post-api.service';
+import { PostAPIService } from '../../../data/network/social/post-api.service';
 
 @Component({
   selector: 'app-post',

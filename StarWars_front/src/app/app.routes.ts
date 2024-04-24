@@ -1,18 +1,18 @@
 import { Routes } from '@angular/router';
-import { PlanetComponent } from './planet/planet.component';
-import { StarshipsComponent } from './starships/starships.component';
-import { PlanetdetailComponent } from './planetdetail/planetdetail.component';
-import { HomeComponent } from './home/home.component';
-import { StarshipdetailComponent } from './starshipdetail/starshipdetail.component';
-import { CharactersComponent } from './characters/characters.component';
-import { CharacterdetailComponent } from './characterdetail/characterdetail.component';
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./registration/registration.component";
-import { ForumComponent } from "./forum/forum.component";
-import { PostComponent } from "./post/post.component";
-import { BottomPostsComponent } from "./bottom-posts/bottom-posts.component";
-import { CommentComponent } from "./comment/comment.component";
-import { ComentateComponent } from "./comentate/comentate.component";
+import { PlanetComponent } from './view/startwars/planet/planet.component';
+import { PlanetdetailComponent } from './view/startwars/planetdetail/planetdetail.component';
+import { HomeComponent } from './view/startwars/home/home.component';
+import { CharactersComponent } from './view/startwars/characters/characters.component';
+import { CharacterdetailComponent } from './view/startwars/characterdetail/characterdetail.component';
+import { LoginComponent } from "./view/forum/login/login.component";
+import { PostComponent } from "./view/forum/post/post.component";
+import { CommentComponent } from "./view/forum/comment/comment.component";
+import { ComentateComponent } from "./view/forum/comentate/comentate.component";
+import { StarshipsComponent } from './view/startwars/starships/starships.component';
+import { StarshipdetailComponent } from './view/startwars/starshipdetail/starshipdetail.component';
+import { RegisterComponent } from './view/forum/registration/registration.component';
+import { ForumComponent } from './view/forum/forum/forum.component';
+import { BottomPostsComponent } from './view/forum/bottom-posts/bottom-posts.component';
 
 
 export const routes: Routes = [
@@ -42,8 +42,8 @@ export const routes: Routes = [
   { path: 'forum', component: ForumComponent },
   { path: 'post', component: PostComponent },
   { path: 'bottom-posts', component: BottomPostsComponent },
-  { path: 'comment', component: CommentComponent },
-  { path: 'comentate', component: ComentateComponent },
+  { path: 'comment/:id', component: CommentComponent },
+  { path: 'comentate/:id', component: ComentateComponent },
     {
         path: 'planet/:name',
         component: PlanetdetailComponent,

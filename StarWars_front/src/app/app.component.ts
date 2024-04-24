@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { CatalogComponent } from './catalog/catalog.component';
+import { CatalogComponent } from './view/startwars/catalog/catalog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from "./login/login.component";
+import { HomeComponent } from './view/startwars/home/home.component';
+import { LoginComponent } from "./view/forum/login/login.component";
 import { AuthAPIServiceService } from './data/network/auth/service/auth-apiservice.service';
 
 @Component({

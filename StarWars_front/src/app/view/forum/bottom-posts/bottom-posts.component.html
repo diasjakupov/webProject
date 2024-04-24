@@ -8,7 +8,7 @@
     <h4>{{ post.content }}</h4>
   </div>
   <div class="post-footer">
-    <a [routerLink]="['/comment']" class="view-comments-btn"  >View Comments {{post.comments}}</a>
+    <a [routerLink]="['/comment', post.id]" class="view-comments-btn"  >View Comments {{post.comments}}</a>
     <div class="like-container" (click)="like(post.id)">
       <div class="btn-like"></div>
       <p class="likes-count">{{post.likes}}</p>

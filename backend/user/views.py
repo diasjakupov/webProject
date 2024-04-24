@@ -17,7 +17,6 @@ class SocialUserListView(generics.GenericAPIView, mixins.ListModelMixin, mixins.
     
 
     def post(request, *args, **kwargs):
-        print(request.request.data)
         username = request.request.data.get("username")
         password = request.request.data.get("password")
         email = request.request.data.get("email")

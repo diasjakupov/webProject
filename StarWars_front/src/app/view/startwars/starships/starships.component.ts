@@ -1,36 +1,36 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { Planet } from '../planets/planets';
-import { PlanetsService } from '../planets/planets.service';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
-import { DataService } from '../data.service';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { StarshipService } from '../starship/starship.service';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Starship } from '../starship/starship';
+import { Subscription } from 'rxjs';
+import { DataService } from '../../../data.service';
 
 @Component({
-  selector: 'app-planet',
+  selector: 'app-starships',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './planet.component.html',
-  styleUrl: './planet.component.css',
-  providers: [HttpClient, PlanetsService]
+  templateUrl: './starships.component.html',
+  styleUrl: './starships.component.css',
+  providers: [HttpClient, StarshipService]
 })
-export class PlanetComponent implements OnInit {
-  planets: Planet[] = [];
+export class StarshipsComponent implements OnInit {
+  starships: Starship[] = [];
   currentPage = 1;
   private dataSubscription!: Subscription;
   private currentSearch: string = '';
 
-  constructor(private planetService: PlanetsService, private dataService: DataService) { }
+  constructor(private starshipService: StarshipService, private dataService: DataService){ }
 
   ngOnInit(): void {
-    this.loadPlanets('')
+    this.loadStarships('')
     this.dataSubscription = this.dataService.getData().subscribe(data => {
       this.currentSearch = data;
-      this.planets = [];
+      this.starships = [];
       this.currentPage = 1;
-      this.loadPlanets(this.currentSearch);
-    });
+      this.loadStarships(this.currentSearch);
+    })
   }
 
   ngOnDestroy(): void {
@@ -39,12 +39,10 @@ export class PlanetComponent implements OnInit {
     }
   }
 
-  loadPlanets(text: string) {
-    this.planetService.getPlanets(this.currentPage, text).subscribe(
-      (data: any) => {
-        this.planets = [...this.planets, ...data.results];
-      }
-    );
+  loadStarships(text: string) {
+    this.starshipService.getStarships(this.currentPage, text).subscribe((data: any) => {
+      this.starships = [...this.starships, ...data.results];
+    })
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -55,7 +53,7 @@ export class PlanetComponent implements OnInit {
 
     if (windowHeight + scrollPosition >= documentHeight) {
       this.currentPage++;
-      this.loadPlanets(this.currentSearch);
+      this.loadStarships(this.currentSearch);
     }
   }
 

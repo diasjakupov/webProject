@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Post } from '../../../basicModels/post';
+import { Post } from '../../../view/basicModels/post';
 import { BASE_URL } from '../constant';
 import { PostNetworkModel } from '../../models/PostNetworkModel';
 import { AuthHeaders } from '../auth/auth_headers';

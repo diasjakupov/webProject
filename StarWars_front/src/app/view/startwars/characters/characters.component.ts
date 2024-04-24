@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { DataService } from '../data.service';
+import { DataService } from '../../../data.service';
 import { RouterModule } from '@angular/router';
 import { Character } from '../character/character';
 import { CharacterService } from '../character/character.service';

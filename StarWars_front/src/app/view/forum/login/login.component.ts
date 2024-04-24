@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Router, RouterLink} from "@angular/router";
-import { AuthAPIServiceService } from '../data/network/auth/service/auth-apiservice.service';
+import { AuthAPIServiceService } from '../../../data/network/auth/service/auth-apiservice.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

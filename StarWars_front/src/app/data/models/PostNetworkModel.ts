@@ -1,10 +1,5 @@
-interface AuthorNetworkModel {
-    id: number;
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-  }
+import { AuthorNetworkModel } from "./AuthorNetworkModel";
+
   
 export interface PostNetworkModel {
     id: number;

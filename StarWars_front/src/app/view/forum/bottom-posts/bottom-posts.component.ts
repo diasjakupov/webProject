@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { User } from "../basicModels/user";
 import {Router, RouterLink} from "@angular/router"
-import { PostAPIService } from '../data/network/social/post-api.service';
-import { Post } from '../basicModels/post';
 import { CommonModule } from '@angular/common';
-import { BottomPostService } from './bottom-post.service';
+import { BottomPostService } from '../../../data/network/social/bottom-post.service';
+import { Post } from '../../basicModels/post';
+import { PostAPIService } from '../../../data/network/social/post-api.service';
 
 @Component({
   selector: 'app-bottom-posts',
@@ -19,14 +18,10 @@ import { BottomPostService } from './bottom-post.service';
 export class BottomPostsComponent {
   posts: Post[] | undefined
 
-  constructor(private router: Router, private service: PostAPIService, private bottomService: BottomPostService) {}
+  constructor(private service: PostAPIService, private bottomService: BottomPostService) {}
 
   ngOnInit() {
     this.service.getAllPosts().subscribe((data)=> this.posts = data)
-  }
-
-  navigateToComments() {
-    this.router.navigate(['/comments']); // Replace with your comments route
   }
 
   like(post_id: number){

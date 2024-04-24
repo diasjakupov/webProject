@@ -26,6 +26,7 @@ class PostSerializer(ModelSerializer):
 
 
 class CommentSerializer(ModelSerializer):
+    author = SocialUserSerializer(read_only = True)
     created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
     updated_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
 

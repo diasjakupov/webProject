@@ -6,7 +6,7 @@ from .serializers import PostSerializer, CommentSerializer, LikeSerializer
 from .models import Post, Comment, Like
 from user.models import *
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 # Create your views here.
 
 
@@ -16,18 +16,32 @@ class PostListView(generics.ListAPIView):
     serializer_class = PostSerializer
 
 
-class CommentListView(generics.ListAPIView):
+class CommentListView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
     def get_queryset(self):
         return Comment.objects.filter(post__pk = self.kwargs.get("pk"))
     
+    def post(self, request, pk):
+        commentText = request.data.get("content")
+        user = request.user
+        post = get_object_or_404(Post, pk = pk)
+        try:
+            Comment.objects.create(author = user, post = post, content = commentText)
+            return Response(status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        
     
 class LikeListView(generics.ListAPIView):
     serializer_class = LikeSerializer
 
     def get_queryset(self):
         return Like.objects.filter(post__pk = self.kwargs.get("pk"))
+    
+   
 
 
 @api_view(["POST"])
@@ -35,7 +49,6 @@ class LikeListView(generics.ListAPIView):
 def like_post(request):
 
     user = request.user
-    print(1)
     post_id = request.data.get('post_id')
 
     if not post_id:
